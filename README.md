@@ -2,6 +2,8 @@
 
 Simplify Android permission with Kotlin Supports.
 
+[![](https://jitpack.io/v/ariidjs/PermissionChecker.svg)](https://jitpack.io/#ariidjs/PermissionChecker)
+
 ### Feature
 - Multiple Permissions supports
 - Supported with clean architecture when implementing 'BaseActivity' class.
