@@ -12,7 +12,7 @@ Simplify Android permission with Kotlin Supports.
     - Permission denied
     - Permission permanently denied
 - Snackbar for showing denied causes.
-- Single Permission (Coming Soon)
+- Single Permission
 
 ### How to use
 Add maven `jitpack.io` and `dependencies` in `gradle files (Project)` :
@@ -39,7 +39,7 @@ After that you can easily include the library in your **app** `build.gradle`:
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.ariidjs:PermissionChecker:1.0.0'
+	        implementation 'com.github.ariidjs:PermissionChecker:1.0.1'
 	}
 ```
 
@@ -51,6 +51,7 @@ After that you can easily include the library in your **app** `build.gradle`:
           ...
     }
 ```
+### Multiple Permission
  - Call **requestPermission** function inside your **onCreate** function.
 ```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +63,19 @@ After that you can easily include the library in your **app** `build.gradle`:
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CALL_PHONE,
             Manifest.permission.CAMERA,
+            requestCode = PERMISSION_REQUEST_CODE
+        )
+    }
+```
+### Single Permission
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        requestSinglePermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
             requestCode = PERMISSION_REQUEST_CODE
         )
     }
@@ -86,5 +100,5 @@ You can sent your constibution to `branch` `open-pull`.
 ---
 
 ```
-Copyright 2022 ariidjs
+Copyright 2023 ariidjs
 ```
