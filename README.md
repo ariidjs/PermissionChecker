@@ -35,8 +35,8 @@ dependencyResolutionManagement {
 
 After that you can easily include the library in your **app** `build.gradle`:
 
-```
-dependencies {
+```gradle
+	dependencies {
 	        implementation 'com.github.ariidjs:PermissionChecker:1.0.0'
 	}
 ```
@@ -44,13 +44,13 @@ dependencies {
 ## Usage
 
  - Just extend your **Activity** to **PermissionChecker** and implement the **PermissionChecker.PermissionCallback**.
-```
+```kotlin
     class MainActivity : PermissionChecker(), PermissionChecker.PermissionCallback {
           ...
     }
 ```
  - Call **requestPermission** function inside your **onCreate** function.
-```
+```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,7 +65,7 @@ dependencies {
     }
 ```
  - Don't forget to implement callbacks function!
- ```
+ ```kotlin
       override fun onPermissionResult(requestCode: Int, type: Type) {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             when (type) {
