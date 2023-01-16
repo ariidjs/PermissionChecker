@@ -1,15 +1,16 @@
 package com.ariidjs.permissionchecker
 
-import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 
-abstract class PermissionChecker : Activity() {
+abstract class PermissionChecker : AppCompatActivity() {
 
     private lateinit var permissionCallback: PermissionCallback
 
@@ -34,6 +35,29 @@ abstract class PermissionChecker : Activity() {
             permissionCallback.onPermissionResult(requestCode, Type.DENIED)
         }
     }
+
+    fun requestSinglePermission(
+        callback: PermissionCallback,
+        permission: String,
+        requestCode: Int
+    ) {
+        permissionCallback = callback
+        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                showPermissionSnackBar(
+                    R.string.permission_rationale,
+                    android.R.string.ok
+                ) {
+                    ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+                }
+            } else {
+                ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+            }
+        } else {
+            permissionCallback.onPermissionResult(requestCode, Type.DENIED)
+        }
+    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
