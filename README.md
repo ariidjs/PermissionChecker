@@ -1,6 +1,6 @@
 # Permission Checker
 
-Simplify Android permission with Kotlin Supports.
+Simplify Android permission with Kotlin Supportss.
 
 [![](https://jitpack.io/v/ariidjs/PermissionChecker.svg)](https://jitpack.io/#ariidjs/PermissionChecker)
 
